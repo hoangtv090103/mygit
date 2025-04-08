@@ -1,4 +1,4 @@
-# This module will have the basic higher-level logic of ugit. 
+# This module will have the basic higher-level logic of ugit.
 import os
 
 from . import data
@@ -14,11 +14,12 @@ def write_tree(directory='.'):
             if is_ignored(full):
                 continue
             if entry.is_file(follow_symlinks=False):
-                # TODO: write the file to object store
+                with open(full, 'rb') as f:
+                    print(data.hash_object(f.read()), full)
                 print(full)
             elif entry.is_dir(follow_symlinks=False):
                 write_tree(full)
-    
-    
+
+
 def is_ignored(path):
     return '.mygit' in path.split('/')
