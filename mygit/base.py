@@ -20,5 +20,5 @@ def write_tree(directory='.'):
                 write_tree(full)
     
     
-    def is_ignored(path):
-        return '.mygit' in path.split('/')
+def is_ignored(path):
+    return '.mygit' in path.split('/')
